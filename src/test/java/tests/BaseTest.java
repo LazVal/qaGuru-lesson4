@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 public class BaseTest {
     @BeforeAll
     public static void setupSelenideEnv() {
+        Configuration.timeout = 10000;
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://simplewine.ru";
         Configuration.browser = "chrome";

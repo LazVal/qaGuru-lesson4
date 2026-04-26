@@ -16,6 +16,8 @@ public class MainPage {
     private final SelenideElement searchBar = $("[data-autotest-target-id='header-search-input']");
     private final SelenideElement catalogDescriptionTitle = $("[data-autotest-target-id='search-main-found-text']");
     private final ElementsCollection catalogItem = $$(".catalog-grid__item");
+    private final SelenideElement categoryItem = $("[data-autotest-target-id='search-main-category-2'] > p");
+    private final SelenideElement buttonClick = $("[data-autotest-target-id='header-ecom-catalog-btn']");
 
     public MainPage openPage() {
         open("/");
@@ -43,6 +45,23 @@ public class MainPage {
     }
     public MainPage checkCatalogDescriptionTitle(String value) {
         catalogDescriptionTitle.shouldHave(text(value));
+        return this;
+    }
+    public MainPage checkCategoryItem(String value) {
+        categoryItem.shouldHave(text(value));
+        return this;
+    }
+    public MainPage clickButton() {
+        buttonClick.click();
+        return this;
+    }
+
+    public MainPage chooseCountyItem(String value) {
+        $x("//div[text()='" + value + "']").click();
+        return this;
+    }
+    public MainPage checkCountyFullName(String value) {
+        $x("//h1[text()='" + value + "']").click();
         return this;
     }
 }
