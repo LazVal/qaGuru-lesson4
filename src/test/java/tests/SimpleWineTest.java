@@ -44,7 +44,7 @@ public class SimpleWineTest extends BaseTest {
     }
 
     @CsvFileSource(resources = "/testData/SearchDifferentCountyDrinks.csv")
-    @ParameterizedTest(name = "Поиск алкогольного напитка {0} на сайте и нахождение его в категории товара {1}")
+    @ParameterizedTest(name = "Поиск {0} вина на сайте и просмотр карточки {1}")
     void SearchDifferentCountyDrinks(String differentCounty, String fullCountryName) {
         mainPage.openPage()
                 .proofOfLegalAgeClick()
