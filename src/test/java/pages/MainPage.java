@@ -6,8 +6,6 @@ import utils.JsSnippets;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
@@ -30,7 +28,7 @@ public class MainPage {
         return this;
     }
 
-    public MainPage acceptSityClick() {
+    public MainPage acceptCityClick() {
         acceptSity.click();
         return this;
     }

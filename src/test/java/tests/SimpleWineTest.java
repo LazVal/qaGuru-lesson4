@@ -1,27 +1,23 @@
 package tests;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.MainPage;
-import tests.testdata.TestData;
 
 public class SimpleWineTest extends BaseTest {
     MainPage mainPage = new MainPage();
-    TestData testData = new TestData();
 
     @ValueSource(strings = {
             "Крепкие напитки",
             "Вода"
     })
     @ParameterizedTest(name = "Поиск алкогольного напитка {0} на сайте")
-    void SearchDifferentDrinksShouldNotBeEmpty(String typeOfDrink) {
+    void SearchDifferentDrinksShouldNotBeEmptyTest(String typeOfDrink) {
         mainPage.openPage()
                 .proofOfLegalAgeClick()
-                .acceptSityClick()
+                .acceptCityClick()
                 .searchBarInput(typeOfDrink)
                 .checkCatalogDescriptionTitle(typeOfDrink)
                 .searchCatalogItem();
@@ -32,10 +28,10 @@ public class SimpleWineTest extends BaseTest {
             "Вода | Вода и соки"
     }, delimiter = '|')
     @ParameterizedTest(name = "Поиск алкогольного напитка {0} на сайте и нахождение его в категории товара {1}")
-    void SearchDifferentDrinksShouldNotBeEmptyAndHaveCategory(String typeOfDrink, String expectedCategory) {
+    void SearchDifferentDrinksShouldNotBeEmptyAndHaveCategoryTest(String typeOfDrink, String expectedCategory) {
         mainPage.openPage()
                 .proofOfLegalAgeClick()
-                .acceptSityClick()
+                .acceptCityClick()
                 .searchBarInput(typeOfDrink)
                 .checkCatalogDescriptionTitle(typeOfDrink)
                 .searchCatalogItem()
@@ -45,10 +41,10 @@ public class SimpleWineTest extends BaseTest {
 
     @CsvFileSource(resources = "/testData/SearchDifferentCountyDrinks.csv")
     @ParameterizedTest(name = "Поиск {0} вина на сайте и просмотр карточки {1}")
-    void SearchDifferentCountyDrinks(String differentCounty, String fullCountryName) {
+    void SearchDifferentCountyDrinksTest(String differentCounty, String fullCountryName) {
         mainPage.openPage()
                 .proofOfLegalAgeClick()
-                .acceptSityClick()
+                .acceptCityClick()
                 .clickButton()
                 .chooseCountyItem(differentCounty)
                 .checkCountyFullName(fullCountryName);

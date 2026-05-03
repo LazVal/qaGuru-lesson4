@@ -69,7 +69,6 @@ public class FirstParsingTest {
             JsonNode root = mapper.readTree(is);
             JsonNode array = root.get("array");
             String string = root.get("string").asText();
-            //String object = root.get("object").asText();
             int number = root.get("number").asInt();
             int array_0 = array.get(0).asInt();
             int array_1 = array.get(1).asInt();
